@@ -1,0 +1,33 @@
+pre.vci_code{
+	background:#333;
+	color:#fff;
+	padding:5px;
+	font-size:12px;
+	margin-bottom:0;
+	margin-top:0;
+	overflow-x:auto;
+}
+
+pre.vci_code .c14 { color: #ff40ff; }
+pre.vci_code .c26 { color: #8080ff; }
+pre.vci_code .c27 { color: #ff6060; }
+pre.vci_code .c28 { color: #ff40ff; }
+pre.vci_code .c30 { color: #ffff00; }
+pre.vci_code .c31 { color: #ff40ff; }
+pre.vci_code .c32 { color: #00ff00; }
+
+p.vci_info, p.vci_warning{
+	background:#eee;
+	color:#666;
+	font-size:80%;
+	padding:3px;
+	margin-top:0;
+	margin-bottom:0;
+	text-align:right;
+}
+
+p.vci_warning{
+	background:#fee;
+	font-weight:bold;
+	text-align:left;
+}
