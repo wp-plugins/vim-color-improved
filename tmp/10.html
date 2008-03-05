@@ -1,0 +1,60 @@
+
+#!/usr/bin/php -q
+
+<span style="color:#ff40ff">&lt;?php</span>
+<span style="color:#8080ff">/**</span>
+<span style="color:#8080ff"> * This is our main function. In PHP, there isn't really a need for this to be</span>
+<span style="color:#8080ff"> * a function, but to keep consistant, I've placed it there anyway, and called</span>
+<span style="color:#8080ff"> * it from the script. In keeping with good programming practices, this script</span>
+<span style="color:#8080ff"> * exits with a status 0. Any other status would indicate an error condition.</span>
+<span style="color:#8080ff"> */</span>
+
+<span style="color:#ff40ff">function</span> main<span style="color:#ff40ff">(){</span>
+
+  <span style="color:#00ffff">printf</span><span style="color:#ff40ff">(</span>&quot;<span style="color:#ff6060">How many numbers of the sequence would you like?</span><span style="color:#ff40ff">\n</span>&quot;<span style="color:#ff40ff">)</span>;
+
+  <span style="color:#8080ff">/*</span>
+<span style="color:#8080ff">   * To read from stdin in php, you open it as a file handle, and use</span>
+<span style="color:#8080ff">   * the standard file reading functions</span>
+<span style="color:#8080ff">   */</span>
+
+  <span style="color:#ffff00">$</span><span style="color:#00ffff">fr</span><span style="color:#ffff00">=</span><span style="color:#00ffff">fopen</span><span style="color:#ff40ff">(</span>&quot;<span style="color:#ff6060">php://stdin</span>&quot;,&quot;<span style="color:#ff6060">r</span>&quot;<span style="color:#ff40ff">)</span>;
+  <span style="color:#ffff00">$</span><span style="color:#00ffff">n</span> <span style="color:#ffff00">=</span> <span style="color:#00ffff">rtrim</span><span style="color:#ff40ff">(</span><span style="color:#00ffff">fgets</span><span style="color:#ff40ff">(</span><span style="color:#ffff00">$</span><span style="color:#00ffff">fr</span>,<span style="color:#ff6060">128</span><span style="color:#ff40ff">))</span>;
+  <span style="color:#00ffff">fclose</span> <span style="color:#ff40ff">(</span><span style="color:#ffff00">$</span><span style="color:#00ffff">fr</span><span style="color:#ff40ff">)</span>;
+
+  <span style="color:#8080ff">/* Then we call the fibonacci function */</span>
+  fibonacci<span style="color:#ff40ff">(</span><span style="color:#ffff00">$</span><span style="color:#00ffff">n</span><span style="color:#ff40ff">)</span>;
+  <span style="color:#ffff00">exit</span><span style="color:#ff40ff">(</span><span style="color:#ff6060">0</span><span style="color:#ff40ff">)</span>;
+<span style="color:#ff40ff">}</span>
+
+<span style="color:#8080ff">/**</span>
+<span style="color:#8080ff"> * The fibonacci function should look familiar.</span>
+<span style="color:#8080ff"> */</span>
+
+<span style="color:#ff40ff">function</span> fibonacci<span style="color:#ff40ff">(</span><span style="color:#ffff00">$</span><span style="color:#00ffff">n</span><span style="color:#ff40ff">){</span>
+  <span style="color:#8080ff">/* </span>
+<span style="color:#8080ff">   * Notice that in PHP, we do not have to declare our variables, nor must we</span>
+<span style="color:#8080ff">   * declare their types. Also see how variables in PHP are prefaced with the </span>
+<span style="color:#8080ff">   * dollar sign. Other than that, this is identical to the C version of this function.</span>
+<span style="color:#8080ff">   */</span>
+  <span style="color:#ffff00">$</span><span style="color:#00ffff">a</span> <span style="color:#ffff00">=</span> <span style="color:#ff6060">0</span>;
+  <span style="color:#ffff00">$</span><span style="color:#00ffff">b</span> <span style="color:#ffff00">=</span> <span style="color:#ff6060">1</span>;
+  <span style="color:#ffff00">for</span> <span style="color:#ff40ff">(</span><span style="color:#ffff00">$</span><span style="color:#00ffff">i</span> <span style="color:#ffff00">=</span> <span style="color:#ff6060">0</span>; <span style="color:#ffff00">$</span><span style="color:#00ffff">i</span> <span style="color:#ffff00">&lt;</span> <span style="color:#ffff00">$</span><span style="color:#00ffff">n</span>; <span style="color:#ffff00">$</span><span style="color:#00ffff">i</span><span style="color:#ffff00">++</span><span style="color:#ff40ff">){</span>
+    <span style="color:#00ffff">printf</span><span style="color:#ff40ff">(</span>&quot;<span style="color:#ff6060">%d</span><span style="color:#ff40ff">\n</span>&quot;,<span style="color:#ffff00">$</span><span style="color:#00ffff">a</span><span style="color:#ff40ff">)</span>;
+    <span style="color:#ffff00">$</span><span style="color:#00ffff">sum</span> <span style="color:#ffff00">=</span> <span style="color:#ffff00">$</span><span style="color:#00ffff">a</span><span style="color:#ffff00">+</span><span style="color:#ffff00">$</span><span style="color:#00ffff">b</span>;
+    <span style="color:#ffff00">$</span><span style="color:#00ffff">a</span> <span style="color:#ffff00">=</span> <span style="color:#ffff00">$</span><span style="color:#00ffff">b</span>;
+    <span style="color:#ffff00">$</span><span style="color:#00ffff">b</span> <span style="color:#ffff00">=</span> <span style="color:#ffff00">$</span><span style="color:#00ffff">sum</span>;
+  <span style="color:#ff40ff">}</span>
+<span style="color:#ff40ff">}</span>
+
+<span style="color:#8080ff">/**</span>
+<span style="color:#8080ff"> * In PHP, program execution starts here. It isn't neccessary to place functions </span>
+<span style="color:#8080ff"> * ahead of the program, but it's a good practice. In a larger application, these</span>
+<span style="color:#8080ff"> * functions would be in seperate files. Again, since PHP is a procedural language,</span>
+<span style="color:#8080ff"> * I could have simply included the contents of the main function here, rather than</span>
+<span style="color:#8080ff"> * defining a function and calling it.</span>
+<span style="color:#8080ff"> */</span>
+
+main<span style="color:#ff40ff">()</span>;
+
+<span style="color:#ff40ff">?&gt;</span>

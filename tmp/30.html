@@ -1,0 +1,29 @@
+
+<span style="color:#ff40ff">class </span><span style="color:#00ff00">AccountController </span>&lt; <span style="color:#ff40ff">ApplicationController</span>
+  layout .standard.
+  before_filter<span style="color:#ff40ff"> :login_required</span>,<span style="color:#ff40ff"> :except</span> =&gt; [:login]
+
+<span style="color:#ff40ff">  def </span><span style="color:#00ffff">login</span>
+    <span style="color:#ffff00">case</span> request.method
+      <span style="color:#ffff00">when</span><span style="color:#ff40ff"> :post</span>
+<span style="color:#ffff00">      if</span> session[:user] = <span style="color:#ff40ff">User</span>.authenticate(params[:user_login], params[:user_password])
+        flash[:notice]  = .<span style="color:#ff40ff">Login</span> successful.
+
+      <span style="color:#ffff00">else</span>
+        session[:user] = <span style="color:#ff6060">nil</span>
+        flash.now[:notice]  = .<span style="color:#ff40ff">Login</span> unsuccessful.
+        <span style="color:#ff40ff">@login</span> = params[:user_login]
+      <span style="color:#ffff00">end</span>
+
+    <span style="color:#ffff00">end</span>
+  <span style="color:#ff40ff">end</span>
+
+<span style="color:#ff40ff">  def </span><span style="color:#00ffff">logout</span>
+    session[:user] = <span style="color:#ff6060">nil</span>
+
+  <span style="color:#ff40ff">end</span>
+
+<span style="color:#ff40ff">  def </span><span style="color:#00ffff">welcome</span>
+  <span style="color:#ff40ff">end</span>
+
+<span style="color:#ff40ff">end</span>

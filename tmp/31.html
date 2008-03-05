@@ -1,0 +1,22 @@
+
+<span style="color:#ff40ff">class </span><span style="color:#00ff00">User </span>&lt; <span style="color:#ff40ff">ActiveRecord</span>::<span style="color:#ff40ff">Base</span>
+
+  <span style="color:#8080ff"># Checks login information</span>
+<span style="color:#ff40ff">  def </span><span style="color:#00ffff">self.authenticate</span>(nick, pass)
+    user = find(:first,<span style="color:#ff40ff"> :conditions</span> =&gt; [.nick = ?.,nick])
+
+<span style="color:#ffff00">    if</span> <span style="color:#ff40ff">Password</span>::check(pass,user.password)
+      user
+    <span style="color:#ffff00">else</span>
+      <span style="color:#ffff00">return</span> <span style="color:#ff6060">false</span>
+    <span style="color:#ffff00">end</span>
+  <span style="color:#ff40ff">end</span>
+
+  protected
+
+  <span style="color:#8080ff"># Hash the password before saving the record</span>
+<span style="color:#ff40ff">  def </span><span style="color:#00ffff">before_create</span>
+    <span style="color:#ff6060">self</span>.password = <span style="color:#ff40ff">Password</span>::update(<span style="color:#ff6060">self</span>.password)
+  <span style="color:#ff40ff">end</span>
+
+<span style="color:#ff40ff">end</span>

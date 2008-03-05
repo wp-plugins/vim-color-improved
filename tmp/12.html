@@ -1,0 +1,14 @@
+
+<span style="color:#ff40ff">&lt;?php</span>
+<span style="color:#ff40ff">require_once</span><span style="color:#ff40ff">(</span>'<span style="color:#ff6060">../classes/simpletest/unit_tester.php</span>'<span style="color:#ff40ff">)</span>;
+<span style="color:#ff40ff">require_once</span><span style="color:#ff40ff">(</span>'<span style="color:#ff6060">../classes/simpletest/reporter.php</span>'<span style="color:#ff40ff">)</span>;
+
+<span style="color:#00ff00">class</span> ClassExists <span style="color:#00ff00">extends</span> UnitTestCase <span style="color:#ff40ff">{</span>
+        <span style="color:#ff40ff">function</span> testClassExists<span style="color:#ff40ff">(){</span>
+                <span style="color:#ffff00">$</span><span style="color:#00ffff">this</span><span style="color:#00ff00">-&gt;</span>assertTrue<span style="color:#ff40ff">(</span><span style="color:#00ffff">class_exists</span><span style="color:#ff40ff">(</span>&quot;<span style="color:#ff6060">TicTacToe</span>&quot;<span style="color:#ff40ff">))</span>;
+        <span style="color:#ff40ff">}</span>
+<span style="color:#ff40ff">}</span>
+
+<span style="color:#ffff00">$</span><span style="color:#00ffff">test</span> <span style="color:#ffff00">=</span> <span style="color:#ff40ff">new</span> ClassExists<span style="color:#ff40ff">()</span>;
+<span style="color:#ffff00">$</span><span style="color:#00ffff">test</span><span style="color:#00ff00">-&gt;</span>run<span style="color:#ff40ff">(</span><span style="color:#ff40ff">new</span> TextReporter<span style="color:#ff40ff">())</span>;
+<span style="color:#ff40ff">?&gt;</span>

@@ -1,0 +1,68 @@
+
+<span style="color:#8080ff">/*</span><span style="color:#8080ff">*</span>
+<span style="color:#8080ff"> * You'll notice that we need to include a header file that</span>
+<span style="color:#8080ff"> * contains functions we need to use. Being a compiled language,</span>
+<span style="color:#8080ff"> * it's inefficient to include functions that aren't needed.</span>
+<span style="color:#8080ff"> * stdio.h contains functions for reading from and writing to the console</span>
+<span style="color:#8080ff"> */</span>
+
+<span style="color:#ff40ff">#include </span><span style="color:#ff6060">&lt;stdio.h&gt;</span>
+
+<span style="color:#8080ff">/*</span><span style="color:#8080ff">*</span>
+<span style="color:#8080ff"> * In C, the program executes the main function. You should also take note</span>
+<span style="color:#8080ff"> * that we must declare a return type for the function. In this case, it's</span>
+<span style="color:#8080ff"> * an integer, and we return 0 to indicate successful completion of the </span>
+<span style="color:#8080ff"> * program.</span>
+<span style="color:#8080ff"> */</span>
+
+<span style="color:#00ff00">int</span> main ()
+{
+  <span style="color:#8080ff">/*</span><span style="color:#8080ff"> Notice that we need to declare our variables, and their type */</span>
+
+  <span style="color:#00ff00">int</span> n;
+
+  <span style="color:#8080ff">/*</span><span style="color:#8080ff"> printf prints a formated string to the stdout */</span>
+
+  printf(<span style="color:#ff6060">&quot;</span><span style="color:#ff40ff">\n</span><span style="color:#ff6060">How many numbers of the sequence would you like?</span><span style="color:#ff40ff">\n</span><span style="color:#ff6060">&quot;</span>);
+
+  <span style="color:#8080ff">/*</span><span style="color:#8080ff"> scanf reads a formated string from the stdin. We are expecting an integer here. */</span>
+
+  scanf(<span style="color:#ff6060">&quot;</span><span style="color:#ff40ff">%d</span><span style="color:#ff6060">&quot;</span>,&amp;n);
+
+  <span style="color:#8080ff">/*</span><span style="color:#8080ff"> Here we call the fibonacci function */</span>
+
+  fibonacci(n);
+
+  <span style="color:#8080ff">/*</span><span style="color:#8080ff"> Finally, return 0 */</span>
+
+  <span style="color:#ffff00">return</span> <span style="color:#ff6060">0</span>;
+}
+
+<span style="color:#8080ff">/*</span><span style="color:#8080ff">*</span>
+<span style="color:#8080ff"> * This is the simple fibonacci sequence generator. Notice also, we</span>
+<span style="color:#8080ff"> * declare the type of variable we expect to be passed to the function.</span>
+<span style="color:#8080ff"> */</span>
+
+<span style="color:#00ff00">int</span> fibonacci(<span style="color:#00ff00">int</span> n)
+{
+  <span style="color:#8080ff">/*</span><span style="color:#8080ff">*</span>
+<span style="color:#8080ff">   * Here we declare and set our variables.</span>
+<span style="color:#8080ff">   */</span>
+  <span style="color:#00ff00">int</span> a = <span style="color:#ff6060">0</span>;
+  <span style="color:#00ff00">int</span> b = <span style="color:#ff6060">1</span>;
+  <span style="color:#00ff00">int</span> sum;
+  <span style="color:#00ff00">int</span> i;
+
+  <span style="color:#8080ff">/*</span><span style="color:#8080ff">*</span>
+<span style="color:#8080ff">   * Here is the standard for loop. This will step through, performing the code</span>
+<span style="color:#8080ff">   * inside the braces until i is equal to n.</span>
+<span style="color:#8080ff">   */</span>
+  <span style="color:#ffff00">for</span> (i=<span style="color:#ff6060">0</span>;i&lt;n;i++)
+  {
+    printf(<span style="color:#ff6060">&quot;</span><span style="color:#ff40ff">%d</span><span style="color:#ff40ff">\n</span><span style="color:#ff6060">&quot;</span>,a);
+    sum = a + b;
+    a = b;
+    b = sum;
+  }
+  <span style="color:#ffff00">return</span> <span style="color:#ff6060">0</span>;
+}

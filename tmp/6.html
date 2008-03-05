@@ -1,0 +1,50 @@
+
+<span style="color:#ff40ff">#!/usr/bin/perl</span>
+
+<span style="color:#8080ff"># Functions in Perl are called subroutines. Like bash, you don't define the </span>
+<span style="color:#8080ff"># parameters in the function declaration. We'll see how to access the parameters</span>
+<span style="color:#8080ff"># when we look at the Fibonacci subroutine below.</span>
+
+<span style="color:#ffff00">sub</span><span style="color:#00ffff"> </span><span style="color:#00ffff">main</span><span style="color:#00ffff"> </span>{
+
+<span style="color:#8080ff"># Again, the ubiquitous printf function. Apparently a staple of programming</span>
+<span style="color:#ffff00">printf</span> <span style="color:#ff6060">&quot;</span><span style="color:#ff40ff">\n</span><span style="color:#ff6060">How many numbers of the sequence would you like?</span><span style="color:#ff40ff">\n</span><span style="color:#ff6060">&quot;</span>;
+
+<span style="color:#8080ff"># Once again, we don't need to declare variables before using them.</span>
+<span style="color:#8080ff"># Perl's scalar variables, prefaced with $, can be either strings or numbers</span>
+<span style="color:#8080ff"># We use &lt;STDIN&gt; to get the data from stdin here</span>
+
+<span style="color:#00ffff">$n</span> = <span style="color:#00ffff">&lt;STDIN&gt;</span>;
+
+<span style="color:#8080ff"># As in PHP, we need to remove the newline at the end</span>
+
+<span style="color:#ffff00">chop</span> <span style="color:#00ffff">$n</span>;
+
+<span style="color:#00ffff">&amp;fibonacci</span>(<span style="color:#00ffff">$n</span>);
+
+<span style="color:#ffff00">exit</span> <span style="color:#ff6060">0</span>;
+}
+
+<span style="color:#8080ff"># Except for the first line declaring the subroutine, and the different way that</span>
+<span style="color:#8080ff"># parameters passed to the subroutine are passed, this is identical to the PHP version</span>
+
+<span style="color:#ffff00">sub</span><span style="color:#00ffff"> </span><span style="color:#00ffff">fibonacci</span><span style="color:#00ffff"> </span>{
+  <span style="color:#00ffff">$a</span> = <span style="color:#ff6060">0</span>;
+  <span style="color:#00ffff">$b</span> = <span style="color:#ff6060">1</span>;
+
+  <span style="color:#8080ff"># So now we see the parameter being used here. For clarity, I have written the for</span>
+  <span style="color:#8080ff"># loop using $n like the other examples. To set $n using the first parameter passed</span>
+  <span style="color:#8080ff"># to the subroutine, I access the scalar variable $_[0], which is the first element</span>
+  <span style="color:#8080ff"># of the parameter array @_</span>
+
+  <span style="color:#00ffff">$n</span> = <span style="color:#00ffff">$_</span>[<span style="color:#ff6060">0</span>];
+
+  <span style="color:#ffff00">for</span> (<span style="color:#00ffff">$i</span>=<span style="color:#ff6060">0</span>;<span style="color:#00ffff">$i</span>&lt;<span style="color:#00ffff">$n</span>;<span style="color:#00ffff">$i</span>++){
+    <span style="color:#ffff00">printf</span> <span style="color:#ff6060">&quot;</span><span style="color:#00ffff">%d</span><span style="color:#ff40ff">\n</span><span style="color:#ff6060">&quot;</span>, <span style="color:#00ffff">$a</span>;
+    <span style="color:#00ffff">$sum</span> = <span style="color:#00ffff">$a</span> + <span style="color:#00ffff">$b</span>;
+    <span style="color:#00ffff">$a</span> = <span style="color:#00ffff">$b</span>;
+    <span style="color:#00ffff">$b</span> = <span style="color:#00ffff">$sum</span>;
+  }
+}
+
+<span style="color:#00ffff">&amp;main</span>;

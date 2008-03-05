@@ -1,0 +1,30 @@
+
+<span style="color:#ff40ff">#!/usr/local/bin/ruby</span>
+
+<span style="color:#8080ff"># In Ruby, we define a function with def...end functions can accept parameters,</span>
+<span style="color:#8080ff"># but don't have to, and you can leave off the parenthesis if your function does</span>
+<span style="color:#8080ff"># not need them.</span>
+
+<span style="color:#ff40ff">def </span><span style="color:#00ffff">main</span>
+  printf <span style="color:#ff40ff">&quot;</span><span style="color:#ff40ff">\n</span><span style="color:#ff6060">How many numbers of the sequence would you like?</span><span style="color:#ff40ff">\n</span><span style="color:#ff40ff">&quot;</span>
+
+  <span style="color:#8080ff"># Here, STDIN is a constant, but like everything in Ruby, it's also a class, so</span>
+  <span style="color:#8080ff"># we use the readline method to get our input. to_i casts our input to an integer</span>
+
+  n = <span style="color:#ff40ff">STDIN</span>.readline.to_i
+  fibonacci(n)
+<span style="color:#ff40ff">end</span>
+
+<span style="color:#8080ff"># Here is a good example of something that is cool about Ruby. The times method</span>
+<span style="color:#8080ff"># works just like it sounds, it will do something n times. As in Perl and Python,</span>
+<span style="color:#8080ff"># we don't need a temp variable here to swap the values for a and b.</span>
+
+<span style="color:#ff40ff">def </span><span style="color:#00ffff">fibonacci</span>(n)
+  a,b = <span style="color:#ff6060">0</span>,<span style="color:#ff6060">1</span>
+  n.times <span style="color:#ffff00">do</span>
+    printf(<span style="color:#ff40ff">&quot;</span><span style="color:#ff6060">%d</span><span style="color:#ff40ff">\n</span><span style="color:#ff40ff">&quot;</span>, a)
+    a,b = b,a+b
+  <span style="color:#ffff00">end</span>
+<span style="color:#ff40ff">end</span>
+
+main

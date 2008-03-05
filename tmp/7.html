@@ -1,0 +1,46 @@
+
+<span style="color:#8080ff">#!/bin/bash</span>
+
+<span style="color:#8080ff">#</span>
+<span style="color:#8080ff"># Here is our main function. Like PHP, I could have simply placed this in the script</span>
+<span style="color:#8080ff"># rather than having a function. You notice that like C and PHP, the printf function</span>
+<span style="color:#8080ff"># still exists. Unlike C and PHP function calls do not enclose the parameters with </span>
+<span style="color:#8080ff"># paraenthsis.</span>
+
+<span style="color:#00ffff">function</span> main <span style="color:#ff40ff">{</span>
+  <span style="color:#ffff00">printf</span> <span style="color:#ffff00">&quot;</span><span style="color:#ff40ff">\n</span><span style="color:#ff6060">How many numbers of the sequence would you like?</span><span style="color:#ff40ff">\n</span><span style="color:#ffff00">&quot;</span>
+
+  <span style="color:#8080ff"># Bash lets us use a function &quot;read&quot; to get input from stdin</span>
+  <span style="color:#8080ff"># Notice that we are not using a dollar sign in front of the variables when</span>
+  <span style="color:#8080ff"># we set them, but we need to when we use them.</span>
+
+  <span style="color:#ffff00">read</span> n
+  fibonacci <span style="color:#ff40ff">$n</span>
+
+  <span style="color:#8080ff"># Again, I'm exiting with status 0</span>
+
+  <span style="color:#ffff00">exit</span> <span style="color:#ff6060">0</span>
+<span style="color:#ff40ff">}</span>
+
+<span style="color:#8080ff"># Starting to look familiar? This function is actually a little different than the </span>
+<span style="color:#8080ff"># C style for loop that we've used before. Instead we use while..do..done to accomplish</span>
+<span style="color:#8080ff"># the same thing. You'll also see that rather than specifying parameters in the </span>
+<span style="color:#8080ff"># function;s declaration, we simply reference the variable &quot;$1&quot; to get the first parameter</span>
+<span style="color:#8080ff"># passed when the function was called.</span>
+
+<span style="color:#00ffff">function</span> fibonacci <span style="color:#ff40ff">{</span>
+  <span style="color:#00ffff">a</span>=<span style="color:#ff6060">0</span>
+  <span style="color:#00ffff">b</span>=<span style="color:#ff6060">1</span>
+  <span style="color:#00ffff">i</span>=<span style="color:#ff6060">0</span>
+
+  <span style="color:#ffff00">while</span><span style="color:#ffff00"> </span><span style="color:#ffff00">[</span><span style="color:#ffff00"> </span><span style="color:#ff40ff">$i</span><span style="color:#ffff00"> </span><span style="color:#ffff00">-lt</span><span style="color:#ffff00"> </span><span style="color:#ff40ff">$1</span><span style="color:#ffff00"> </span><span style="color:#ffff00">]</span>
+<span style="color:#ffff00">  </span><span style="color:#ffff00">do</span>
+    <span style="color:#ffff00">printf</span> <span style="color:#ffff00">&quot;</span><span style="color:#ff6060">%d</span><span style="color:#ff40ff">\n</span><span style="color:#ffff00">&quot;</span> <span style="color:#ff40ff">$a</span>
+    <span style="color:#ffff00">let</span> <span style="color:#00ffff">sum</span>=<span style="color:#ff40ff">$a</span>+<span style="color:#ff40ff">$b</span>
+    <span style="color:#ffff00">let</span> <span style="color:#00ffff">a</span>=<span style="color:#ff40ff">$b</span>
+    <span style="color:#ffff00">let</span> <span style="color:#00ffff">b</span>=<span style="color:#ff40ff">$sum</span>
+    <span style="color:#ffff00">let</span> <span style="color:#00ffff">i</span>=<span style="color:#ff40ff">$i</span>+<span style="color:#ff6060">1</span>
+  <span style="color:#ffff00">done</span>
+<span style="color:#ff40ff">}</span>
+
+main

@@ -1,0 +1,26 @@
+
+<span style="color:#8080ff">#!/usr/bin/python</span>
+
+<span style="color:#8080ff"># Import the system library. This allows us to access stdin later.</span>
+<span style="color:#ff40ff">import</span> sys
+
+<span style="color:#8080ff"># Here's our main function. Python is pretty efficient here. You</span>
+<span style="color:#8080ff"># should notice that there are no braces. Python is dependant on</span>
+<span style="color:#8080ff"># whitespace to define blocks.</span>
+
+<span style="color:#ffff00">def</span> <span style="color:#00ffff">main</span>():
+  <span style="color:#ffff00">print</span> &quot;<span style="color:#ff40ff">\n</span><span style="color:#ff6060">How many numbers of the sequence would you like?</span>&quot;
+  n = int(sys.stdin.readline())
+  fibonacci(n)
+
+<span style="color:#8080ff"># Here's the fibonacci function. Like in Perl, you can assign multiple</span>
+<span style="color:#8080ff"># variables on a line without using a temporary variable. Also, the for </span>
+<span style="color:#8080ff"># loop here works more like a foreach loop by setting a range from 0 to n.</span>
+
+<span style="color:#ffff00">def</span> <span style="color:#00ffff">fibonacci</span>(n):
+  a,b = 0,1
+  <span style="color:#ffff00">for</span> i <span style="color:#ffff00">in</span> range(0,n):
+    <span style="color:#ffff00">print</span> a
+    a,b, = b,a+b
+
+main()
