@@ -2,7 +2,7 @@
 Contributors: zacharyfox
 Tags: posts, syntax highlight, vim
 Requires at least: 2.2.2
-Tested up to: 2.2.2
+Tested up to: 2.3.2
 Stable tag: trunk
 
 Vim Color Improved is a syntax highlighting plugin that uses vim.
@@ -11,7 +11,7 @@ Vim Color Improved is a syntax highlighting plugin that uses vim.
 
 Vim Color Improved is a syntax highlighting plugin that allows you to include code from local or reomte files in your Wordpress posts.
 
-It uses the same tag and parameter parsing as the popular codeviewer 1.4, and should be compatible with it's options. In addition, any of the optional parameters from codeviewer 1.4 can be set as defaults, which can then be overriden by parameters in the tag. Vim Color Improved outputs code in <pre> formatted blocks, rather than ordered lists, which can be difficult to copy and paste, and can syntax highlight any language which vim supports.
+It uses the same tag and parameter parsing as the popular CodeViewer 1.4, and should be compatible with it's options. In addition, any of the optional parameters from codeviewer 1.4 can be set as defaults, which can then be overriden by parameters in the tag. Vim Color Improved outputs code in &ltpre&gt formatted blocks, rather than ordered lists, which can be difficult to copy and paste, and can syntax highlight any language which vim supports.
 
 Vim Color Improved contains a sophisticated caching system that stores the generated html to the filesystem. This greatly reduces the time required to display the code. In addition, it checks the modified time on both local and remote files to ensure that cached information is up-to-date. If it is unable to access the source code, and there is a cached version available, it will display the cached version with a notice.
 
@@ -41,10 +41,20 @@ The scroll attribute is optional.
 scroll - string - Should the scrollbar be displayed (yes), or not be displayed (no).
 
 The scrollheight attribute is optional. 
-height- string - Height of the scrollbar. Any valid css height declaration can be used. Example: 100px or 50em
+height - string - Height of the scrollbar. Any valid css height declaration can be used. Example: 100px or 50em
 
 The showsyntax attribute is optional. 
 showsyntax - string - Should the syntax used of [viewcode ]  be displayed (yes), or not be displayed (no).
+
+*Additional Parameters
+
+These are new parameters that can be used by Vim Color Improved.
+
+The cache attribute is optional.
+cache - string - Cache this code block (yes) or not (no).
+
+The html_use_css attribute is optional.
+html_use_css - string - This is a parameter which is passed to vim, and affects the html that is output. Use css (yes) or not (no). If you chose to not use css, the code will be output in &ltspan&gt tags with a style="color:#xxxxxx" attribute, rather than a class.
 
 All attribute values can optionally be surrounded with double quotes (") or single quotes(').
 
@@ -52,9 +62,8 @@ All attribute values can optionally be surrounded with double quotes (") or sing
 
 1. Download vim-color-improved-x.x.x.zip.
 2. Unzip the archive and copy the entire vim-color-improved folder to the wp-content/plugins directory
-3. Vim Color Improved needs a directory to store the cached files and to use as a temp directory. Please make sure that your webserver can write to and read from the vim-color-improved/tmp directory.
-4. Activate the plugin from the Plugins page in your WordPress administration console.
-5. Vim Color Improved also provides an options page for you to set the default options. While the plugin will work without any intervention, you may wish to review these at (Options->Vim Color Improved. You may also see a list of cached files and clear the cache there.
+3. Activate the plugin from the Plugins page in your WordPress administration console.
+4. Vim Color Improved also provides an options page for you to set the default options. While the plugin will work without any intervention, you may wish to review these at (Options->Vim Color Improved. You may also see a list of cached files and clear the cache there.
 
 == Frequently Asked Questions ==
 
@@ -80,10 +89,27 @@ This plugin may not work on all php installations. Specifically, there are some 
 
 == Version History ==
 
+v.0.4.0 Bug fixes and new features
+
+- Fixed problem with files not being found not displaying an error
+- Fixed vim command, was missing last quit
+- Added vci_html_use_css parameter and option
+- Added vim classes to style.css
+- Refactoring of vci_color(), created new methods to decrease the main method size
+- Added vci_link for a default value
+- Added more vim options to the vim command to help performance
+- Added functions.php to include additional functions not directly related to vci
+- Moved temporary directory to the system temp dir to ease installation - no longer need to chmod a directory
+- Attempt auto-detect of vim path using exec('which vim')
+- Added admin css, moved css files to css directory
+- Added management page for cache management
+- Added ability to clear single files from the cache
+- Changed to scroll horizontally by default if code is too wide
+
 v.0.3.2 First Public Version
 
 == License ==
-CCopyright 2008  Zachary Fox  (email : ecommerceninja@gmail.com)
+Copyright 2008  Zachary Fox  (email : ecommerceninja@gmail.com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
